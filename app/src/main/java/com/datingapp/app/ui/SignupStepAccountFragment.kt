@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.datingapp.app.databinding.FragmentSignupStepAccountBinding
+import com.datingapp.app.ui.signup.SignupActivity
 
 class SignupStepAccountFragment : Fragment() {
 

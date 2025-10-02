@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.datingapp.app.databinding.FragmentSignupDobBinding
-import com.datingapp.app.ui.SignupActivity
+
 import java.text.SimpleDateFormat
 import java.util.*
 
