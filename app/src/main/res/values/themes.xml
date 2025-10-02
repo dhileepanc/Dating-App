@@ -1,0 +1,104 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Primary" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorWhite</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnSecondary">@color/colorWhite</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+        <!-- Customize your theme here. -->
+        <item name="colorControlNormal">@color/colorPrimaryText</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+
+
+    </style>
+
+    <!--Primary Text Normal-->
+    <style name="PrimaryTextRegular" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textAppearance">@style/TextAppearanceRegular</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!--Secondary Text Normal-->
+    <style name="SecondaryTextRegular" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textAppearance">@style/TextAppearanceRegular</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!--Primary Text Bold-->
+    <style name="PrimaryTextBold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textAppearance">@style/TextAppearanceBold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!--Secondary Text Bold-->
+    <style name="SecondaryTextBold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textAppearance">@style/TextAppearanceBold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!--Primary Text SemiBold-->
+    <style name="PrimaryTextSemiBold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textAppearance">@style/TextAppearanceSemiBold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!--Secondary Text SemiBold-->
+    <style name="SecondaryTextSemiBold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textAppearance">@style/TextAppearanceSemiBold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!--TextAppearance Normal-->
+    <style name="TextAppearanceRegular" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily">@font/font_medium</item>
+        <item name="font">@font/font_medium</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <!--TextAppearance Bold-->
+    <style name="TextAppearanceBold" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily">@font/font_bold</item>
+        <item name="font">@font/font_bold</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <!--TextAppearance SemiBold-->
+    <style name="TextAppearanceSemiBold" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily">@font/font_semi_bold</item>
+        <item name="font">@font/font_semi_bold</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="SubmitButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="minHeight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="minWidth">0dp</item>
+        <item name="cornerRadius">@dimen/size_8</item>
+        <item name="android:paddingTop">@dimen/margin_normal</item>
+        <item name="android:paddingBottom">@dimen/margin_normal</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textAppearance">@style/TextAppearanceBold</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+</resources>

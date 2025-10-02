@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Dating app</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="enter_your_phone">Enter your phone</string>
+</resources>
