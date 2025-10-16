@@ -1,5 +1,6 @@
 package com.datingapp.app.di.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.*
@@ -28,6 +29,13 @@ class SignupViewModel @Inject constructor(
 
     private val _signupSuccess = MutableLiveData<Boolean>()
     val signupSuccess: LiveData<Boolean> get() = _signupSuccess
+
+    fun printAllData() {
+        Log.d("SignupViewModel", "Name: $name")
+        Log.d("SignupViewModel", "Gender: $gender")
+        Log.d("SignupViewModel", "Height: $height")
+        Log.d("SignupViewModel", "Age Group: $ageGroup")
+    }
 
     fun submitSignup() {
  /*       viewModelScope.launch {   // viewModelScope is here

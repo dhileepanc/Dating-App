@@ -1,23 +1,35 @@
 package com.datingapp.app.ui.signup
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.datingapp.app.MainActivity
 import com.datingapp.app.databinding.FragmentSignupStepAgeGroupBinding
+import com.datingapp.app.di.viewmodel.SignupViewModel
+import com.datingapp.app.utils.GetSet
 
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class SignupStepAgeGroupFragment : Fragment() {
 
     private var _binding: FragmentSignupStepAgeGroupBinding? = null
     private val binding get() = _binding!!
 
-    // Example age ranges
+    private val signupViewModel: SignupViewModel by activityViewModels()
+
     private val ageGroups = listOf("18-25", "26-35", "36-45", "46-60", "60+")
-    private var selectedAgeGroup = ageGroups[0]
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSignupStepAgeGroupBinding.inflate(inflater, container, false)
@@ -28,9 +40,23 @@ class SignupStepAgeGroupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAgeGroupOptions()
+
         binding.btnFinish.setOnClickListener {
-            // Complete signup here
-            // Example: (activity as? SignupActivity)?.finishSignup()
+            val selectedId = binding.rgAgeGroup.checkedRadioButtonId
+            if (selectedId != -1) {
+                val selectedButton = binding.root.findViewById<RadioButton>(selectedId)
+                signupViewModel.ageGroup = selectedButton.text.toString()
+
+                signupViewModel.printAllData()
+
+                GetSet.setLogged(requireContext(), true)
+
+                val intent = Intent(requireContext(), MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireContext(), "Please select an age group", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -45,11 +71,6 @@ class SignupStepAgeGroupFragment : Fragment() {
                 )
             }
             binding.rgAgeGroup.addView(radioButton)
-        }
-
-        binding.rgAgeGroup.setOnCheckedChangeListener { group, checkedId ->
-            val rb = group.findViewById<androidx.appcompat.widget.AppCompatRadioButton>(checkedId)
-            selectedAgeGroup = rb.text.toString()
         }
     }
 

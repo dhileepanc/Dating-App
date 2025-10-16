@@ -12,6 +12,7 @@ import com.datingapp.app.data.AppDefaultModel
 import com.datingapp.app.databinding.ActivityMainBinding
 import com.datingapp.app.di.viewmodel.AppDefaultViewModel
 import com.datingapp.app.ui.LoginActivity
+import com.datingapp.app.utils.GetSet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +29,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun redirection() {
-        startActivity(Intent(this, LoginActivity::class.java))
+
+        if (!GetSet.isLogged(this)) {
+            // If not logged in, go to LoginActivity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
     }
 
     override fun setupViews() {

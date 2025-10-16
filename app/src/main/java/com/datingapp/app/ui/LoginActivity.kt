@@ -1,5 +1,6 @@
 package com.datingapp.app.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.widget.FrameLayout
@@ -11,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.datingapp.app.R
 import com.datingapp.app.base.BaseActivity
 import com.datingapp.app.databinding.ActivityLoginBinding
+
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     private var isPhoneSelected = true
@@ -46,6 +48,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
                 animateIcon(iconLay, centerIcon, R.drawable.ic_email)
                 updateLoginUI()
             }
+        }
+        binding.tvSignup.setOnClickListener {
+            startActivity(Intent(this, SignupActivity::class.java))
         }
     }
 

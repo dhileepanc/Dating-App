@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.datingapp.app.databinding.FragmentSignupDobBinding
+import com.datingapp.app.di.viewmodel.SignupViewModel
+import com.datingapp.app.ui.SignupActivity
 
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.getValue
 
 class SignupStepDOBFragment : Fragment() {
 
@@ -17,6 +21,8 @@ class SignupStepDOBFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val calendar = Calendar.getInstance()
+
+    private val signupViewModel: SignupViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +43,7 @@ class SignupStepDOBFragment : Fragment() {
             // Pass DOB to parent activity or next fragment
             val dob = binding.tvDob.text.toString()
             if (dob.isNotEmpty() && dob != "Tap to select your DOB") {
+                signupViewModel.dob = dob
                 (activity as? SignupActivity)?.nextStep()
             } else {
                 binding.tvDob.error = "Please select your date of birth"

@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.datingapp.app.databinding.FragmentSignupStepDistanceBinding
+import com.datingapp.app.di.viewmodel.SignupViewModel
+import com.datingapp.app.ui.SignupActivity
+import kotlin.getValue
 
 
 class SignupStepDistanceFragment : Fragment() {
@@ -16,6 +20,8 @@ class SignupStepDistanceFragment : Fragment() {
     // Example distances in km
     private val distances = listOf("5 km", "10 km", "20 km", "50 km", "100 km")
     private var selectedDistance = distances[2] // default 20 km
+
+    private val signupViewModel: SignupViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +36,7 @@ class SignupStepDistanceFragment : Fragment() {
 
         setupDistanceOptions()
         binding.btnNext.setOnClickListener {
+            signupViewModel.distance = selectedDistance
             (activity as? SignupActivity)?.nextStep()
         }
     }

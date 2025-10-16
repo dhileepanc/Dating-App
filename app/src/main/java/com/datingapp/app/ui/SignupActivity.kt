@@ -1,4 +1,4 @@
-package com.datingapp.app.ui.signup
+package com.datingapp.app.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -8,7 +8,13 @@ import com.datingapp.app.di.viewmodel.SignupViewModel
 import com.datingapp.app.ui.SignupPagerAdapter
 import com.datingapp.app.ui.SignupStepAccountFragment
 import com.datingapp.app.ui.SignupStepGenderFragment
+import com.datingapp.app.ui.signup.SignupStepAgeGroupFragment
+import com.datingapp.app.ui.signup.SignupStepDOBFragment
+import com.datingapp.app.ui.signup.SignupStepDistanceFragment
+import com.datingapp.app.ui.signup.SignupStepHeightFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignupActivity : BaseActivity<ActivitySignupBinding>() {
 
     private lateinit var signupAdapter: SignupPagerAdapter
@@ -19,7 +25,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupViewPager()
-        observeViewModel()
+//        observeViewModel()
     }
 
     override fun setupViews() {}

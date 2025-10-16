@@ -5,18 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.datingapp.app.databinding.FragmentSignupStepHeightBinding
+import com.datingapp.app.di.viewmodel.SignupViewModel
+import com.datingapp.app.ui.SignupActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.getValue
 
 
+@AndroidEntryPoint
 class SignupStepHeightFragment : Fragment() {
 
     private var _binding: FragmentSignupStepHeightBinding? = null
     private val binding get() = _binding!!
 
-    // Example: height range from 100cm to 220cm
+    // Height range
     private val minHeight = 100
     private val maxHeight = 220
-    private var selectedHeight = 170 // default value
+    private var selectedHeight = 170 // default
+
+    private val signupViewModel: SignupViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +38,12 @@ class SignupStepHeightFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupNumberPicker()
+
         binding.btnNext.setOnClickListener {
-            // You can save selectedHeight to your ViewModel or pass it to the Activity
+            // Save current selectedHeight even if user didn't change the picker
+            signupViewModel.height = selectedHeight.toString()
+
+            // Move to next step
             (activity as? SignupActivity)?.nextStep()
         }
     }
@@ -41,8 +53,10 @@ class SignupStepHeightFragment : Fragment() {
         binding.npHeight.maxValue = maxHeight
         binding.npHeight.value = selectedHeight
 
+        // Update ViewModel on value change
         binding.npHeight.setOnValueChangedListener { _, _, newVal ->
             selectedHeight = newVal
+            signupViewModel.height = newVal.toString()
         }
     }
 
@@ -51,3 +65,4 @@ class SignupStepHeightFragment : Fragment() {
         _binding = null
     }
 }
+
