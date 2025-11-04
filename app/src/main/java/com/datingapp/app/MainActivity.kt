@@ -31,39 +31,47 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setupBottomNavigation()
     }
 
-        redirection()
-    }
 
-    private fun redirection() {
-
-        if (!GetSet.isLogged(this)) {
-            // If not logged in, go to LoginActivity
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
-    fun openFragment(fragment: Fragment) {
+    private fun setupBottomNavigation() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.nav_host_fragment, fragment)
+            .replace(R.id.nav_host_fragment, HomeFragment())
             .commit()
 
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> openFragment(HomeFragment())
+                R.id.navigation_matches -> openFragment(MatchesFragment())
+                R.id.navigation_messages -> openFragment(MessagesFragment())
+                R.id.navigation_profile -> openFragment(ProfileFragment())
+            }
+            true
+        }
     }
 
-    fun hideBottomNavigation() {
-        binding.bottomNavigation.animate()
-            .translationY(binding.bottomNavigation.height.toFloat())
-            .setDuration(300)
-            .start()
+        fun openFragment(fragment: Fragment) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, fragment)
+                .commit()
+
+        }
+
+        fun hideBottomNavigation() {
+            binding.bottomNavigation.animate()
+                .translationY(binding.bottomNavigation.height.toFloat())
+                .setDuration(300)
+                .start()
+        }
+
+        fun showBottomNavigation() {
+            binding.bottomNavigation.animate()
+                .translationY(0f)
+                .setDuration(300)
+                .start()
+        }
+
+
+        override fun setupViews() {}
+        override fun observeData() {}
     }
 
-    fun showBottomNavigation() {
-        binding.bottomNavigation.animate()
-            .translationY(0f)
-            .setDuration(300)
-            .start()
-    }
-
-
-    override fun setupViews() {}
-    override fun observeData() {}
-}
 

@@ -10,5 +10,8 @@ class Constants {
         const val END_POINT ="api/"
         val API_URL = "$SITE_URL$END_POINT" //base url for all api
 
+        public const val TAG_USER_ID = "user_id"
+        public const val TAG_USER_NAME = "user_name"
+
     }
 }

@@ -13,6 +13,7 @@ import com.datingapp.app.R
 import com.datingapp.app.base.BaseActivity
 import com.datingapp.app.databinding.ActivitySplashBinding
 import com.datingapp.app.di.viewmodel.AppDefaultViewModel
+import com.datingapp.app.utils.GetSet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,11 +31,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
             override fun onAnimationStart(animation: Animator) {}
 
             override fun onAnimationEnd(animation: Animator) {
-                moveToHome()
+                redirection()
             }
 
             override fun onAnimationCancel(animation: Animator) {
-                moveToHome()
+                redirection()
             }
 
             override fun onAnimationRepeat(animation: Animator) {}
@@ -44,6 +45,17 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     private fun moveToHome() {
         startActivity(Intent(this,MainActivity::class.java))
         finish()
+    }
+    private fun redirection() {
+
+        if (!GetSet.isLogged(this)) {
+            // If not logged in, go to LoginActivity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+        else{
+            moveToHome()
+        }
     }
 
     override fun setupViews() {
